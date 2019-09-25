@@ -38,7 +38,7 @@ For auth Im using session, and im generating token when user logs in and Im stor
 # What can be done better
 
 For sure part with auth / security, im using session with cookie secure set to true, and im saving auth token to sessionm then inside middleware im
-checking if token from auth header is equal to token in session. This can be done much better and more secure, but i thouht thats enough for this case.
+checking if token from auth header is equal to token in session. This Way its possible to steal someones session. This can be done much better and more secure, but i thouht thats enough for this case.
 Also generating token is done manually,  with math.rand.
 
 I made encode simple and stupid to keep it human readable, go through all elements in sequence check if successive element is the same as previous or if count is equal to 9, if it this is true increase counter if not
@@ -66,3 +66,4 @@ let s = 'XXXYYYYZZQXX'.match(/([a-zA-Z])\1*/g)||[];
 return s.map(i => `${i.charAt(0)}${i.length}).join('');
 ```
 
+Validation of email and password is done on the backend, and on frontend, on frontend it disabled button on backend it returns 400. Frontend validations are nice to have but backend validations are neccessary for the stuff like this...

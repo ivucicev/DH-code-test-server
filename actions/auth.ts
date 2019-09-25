@@ -42,6 +42,12 @@ export const signIn = async (req: any, res: any) => {
 export const signUp = async (req: any, res: any) => {
     try {
         const user = req.body;
+        if (user.password !== user.passwordRepeat) {
+            res.status(400).json({
+                success: false,
+                err: 'Passwords do not match'
+            });
+        }
         const created = await User.create(user);
         res.json({ success: true, created });
     } catch (err) {
