@@ -68,6 +68,9 @@ return s.map(i => `${i.charAt(0)}${i.length}).join('');
 
 Validation of email and password is done on the backend, and on frontend, on frontend it disabled button on backend it returns 400. Frontend validations are nice to have but backend validations are neccessary for the stuff like this...
 
+Should use not master branch for development... 
+Could set TravisCI or CircleCI or Github actions for code deployment
+
 Time taken for this project with interruptions was about 2h
 
 # Why do you have to deal with 2 repos one Frontend other Backend
