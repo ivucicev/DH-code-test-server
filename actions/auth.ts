@@ -12,6 +12,13 @@ export const signIn = async (req: any, res: any) => {
                 req.body.password,
                 user.password
             );
+            if (!cmp) {
+                res.status(400).json({
+                    success: false,
+                    err: 'Invalid email / password combination!'
+                });
+                return;
+            }
             // add token with 10min expiry
             req.session.userId = user._id;
             req.session.expires = Date.now() + 1000 * 60 * 10;
