@@ -7,7 +7,12 @@ import { apiRoutes } from './routing/apiRoutes';
 const app = express();
 const port = 3000;
 
-app.use(cors());
+const corsOptions = {
+    origin: 'http://localhost:4200',
+    credentials: true
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // session
@@ -16,6 +21,7 @@ app.use(
         resave: true,
         secret: 'DH-CODE-TEST-SERVER-X-SESSION',
         saveUninitialized: false
+        // cookie: { secure: false }
     })
 );
 
@@ -43,6 +49,7 @@ db.on(
         'connection error - cannot connect to local mongoDB - make sure mongoDB is running on mongodb://127.0.0.1:27017/DH-code-test-db '
     )
 );
+
 db.once('open', () => {
     console.log('Connected to MongoDB');
 });
