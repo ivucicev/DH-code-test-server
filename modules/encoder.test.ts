@@ -18,3 +18,9 @@ assert(
     expected4 === null,
     'Encoded sequence needs to be consisted of only alphabetic characters'
 );
+
+let expected5 = Encoder.encode('XXXXXXXXXX');
+assert(
+    expected5 === 'X9X1',
+    'Encoded sequence should show only single digit for successive characters'
+);
